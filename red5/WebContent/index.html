@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+<head>
+    
+    <title>Combining Streams : Flowplayer</title>
+
+    <link rel="shortcut icon" href="http://flash.flowplayer.org/favicon.ico">
+    <!-- standalone page styling. can be removed -->
+    <style>
+        body{
+            width:982px;
+            margin:50px auto;
+            font-family:sans-serif;
+        }
+        a:active {
+            outline:none;
+        }
+        :focus { -moz-outline-style:none; }
+
+        .palert {
+            padding: 12px;
+            color: black;
+            background-color: #ededed;
+            box-shadow: none;
+        }
+    </style>
+
+    
+    
+    <!-- flowplayer javascript component -->
+    <script src="flowplayer-3.2.13.min.js"></script>
+
+    </head>
+
+<body>
+    <!-- our player container named "streams" -->
+<!-- player container-->
+<a     class="player"
+    style="display:block;width:425px;height:300px;margin:10px auto"
+    id="streams">
+    </a>
+
+<script>
+/* $f("streams", "flowplayer-3.2.18.swf", {
+    clip: {
+
+        provider: 'cloudfront',
+
+        // combined streams are configured in the "streams" node as follows:
+        streams: [
+            { url: 'red5.mp4' }
+            
+        ]
+    },  */
+     $f("streams", "flowplayer-3.2.18.swf", {
+        clip: {
+
+            provider: 'cloudfront',
+
+            // combined streams are configured in the "streams" node as follows:
+            streams: [
+                { url: '1.mp4' } 
+            ]
+        }, 
+
+    // our rtmp plugin is configured identically as in the first example
+    plugins: {
+        cloudfront: {
+            url: "flowplayer.rtmp-3.2.13.swf",
+            netConnectionUrl: 'rtmp://127.0.0.1/red5'
+        }
+    }
+});
+
+</script>
+</body>
+
+</html>
